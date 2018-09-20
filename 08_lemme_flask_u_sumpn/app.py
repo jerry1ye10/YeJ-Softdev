@@ -18,5 +18,5 @@ def hello_amazing():
     return "Hello Amazing!"
 
 if (__name__) == "__main__":#if this file is run directly then the Flask app will run
-    app.debug = True
+    app.debug = True#allows changes to directly affect local host without rerunning app
     app.run()
