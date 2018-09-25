@@ -3,16 +3,16 @@
 #K10 -- Jinja Tuning
 #2018-09-24
 from flask import Flask, render_template#imports class Flask
-from occupations_data import main
+from occupations_data import table
 app = Flask(__name__)#Creates an instance of Flask
 
 @app.route('/')#Defines index
 def index():
-    return "This site will show occupations!"
+    return "This site will show occupations!  Add /occupations to the link to see!"
 
 @app.route('/occupations')#Defines occupations route
 def show_occupations():
-    randomOccupation,occupationsData, h1, h2 = main()
+    randomOccupation,occupationsData, h1, h2 = table()
     return render_template("occupations.html",randomOccupation = randomOccupation, occupationsData = occupationsData,h1 = h1,h2= h2)
 
 if (__name__) == "__main__":#if this file is run directly then the Flask app will run

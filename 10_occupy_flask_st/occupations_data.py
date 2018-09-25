@@ -1,9 +1,9 @@
-from random import uniform
+from random import uniform #allows us to read CSV files
 
 def read(CSVfileR):#taken from Intro II hw!Opens a file and returns the contents of the file in a list of strings
-    c = open(CSVfileR,"r")
-    CSV =  c.readlines()
-    c.close()
+    data = open(CSVfileR,"r")
+    CSV =  data.readlines()
+    data.close()
     return CSV
 
 #File = read("occupations.csv")
@@ -20,39 +20,40 @@ def editData(list):#edits the list containing the contents of the csv file to ma
 #print (File)
 
 def makeDict(list):#returns a dictionary using the occupation as the key and the percentage as the value
-    d = {}
-    for s in list:
-        s = s[0:len(s) -1]
-        l = []
-        if s[0] == '"':#splits the string by double quotation marks if there are commas in the occupation description
-            l = s.split('"')
-            l.pop(0)
-            l[1] = l[1][1:]
+    dict = {}
+    for string in list:
+        string = string[0:len(string) -1]
+        val = []
+        if string[0] == '"':#splits the string by double quotation marks if there are commas in the occupation description
+            val = string.split('"')
+            val.pop(0)
+            val[1] = val[1][1:]
         else:#splits the string by commas if there are no commas in the occupation description
-            l = s.split(",")
+            val = string.split(",")
         #print (l)
-        d[l[0]] = float(l[1])#Creates the dictionary using the occupation as the key and the percentage as the value
-    return d
+        dict[val[0]] = float(val[1])#Creates the dictionary using the occupation as the key and the percentage as the value
+    return dict
 
 #Dict = makeDict(File)
 def randOccupation(dict,totalPercentage):#returns a random occupation based on percentages in the data
     percent = uniform(0,totalPercentage)#picks a random float from 0 - 99.8
-    for x in dict:
-        percent -= dict[x]#subtracts each percentage  from the randomly picked percentage from 0 - 99.
+    for pval in dict:
+        percent -= dict[pval]#subtracts each percentage  from the randomly picked percentage from 0 - 99.
         if percent < 0:
-            return x
+            return pval
 #print (randOccupation(Dict))
-def main():
+        
+def table():
     File = read("data/occupations.csv")
     head = File[0]
-    head = head[0:len(head) - 1]
-    listH = head.split(",")
-    h1 = listH[0]
-    h2 = listH[1]
+    head = head[0:len(head) - 1] 
+    listH = head.split(",")      #Splits up occ names for table
+    h1 = listH[0]  #Makes First header
+    h2 = listH[1]  #Makes Second header
     Data = File
     Data = Data[1: len(Data)]
     Data = makeDict(Data)
     totalPercentage = editData(File)#total percentage is stored globally
-    Dict = makeDict(File)
-    return (randOccupation(Dict,totalPercentage), Data, h1, h2)
-main()
+    Dict = makeDict(File)  #Makes File into Dict again for randOccupation fnx
+    return (randOccupation(Dict,totalPercentage), Data, h1, h2)  #returns both rand occ, data for table, and headers
+table()
