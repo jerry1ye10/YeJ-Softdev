@@ -43,7 +43,7 @@ def randOccupation(dict,totalPercentage):#returns a random occupation based on p
             return pval
 #print (randOccupation(Dict))
         
-def table():
+def main():
     File = read("data/occupations.csv")
     head = File[0]
     head = head[0:len(head) - 1] 
