@@ -1,4 +1,4 @@
-from flask import Flask #imports class Flask
+from flask import Flask, render_template #imports class Flask
 app = Flask(__name__)#Creates an instance of Flask
 
 @app.route('/')#Defines index
