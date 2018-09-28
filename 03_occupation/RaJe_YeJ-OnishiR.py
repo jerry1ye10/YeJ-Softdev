@@ -10,18 +10,18 @@ def read(CSVfileR):#taken from Intro II hw!Opens a file and returns the contents
     c.close()
     return CSV
 
-File = read("occupations.csv")
+#File = read("occupations.csv")
 def editData(list):#edits the list containing the contents of the csv file to make it easier to parse; returns totalPercentage as a float
-    File.pop(0)#Removes column descriptions
-    totalString = File[-1]
+    list.pop(0)#Removes column descriptions
+    totalString = list[-1]
     totalString = totalString[0:len(totalString) -1]
     totalList = totalString.split(",")
     totalPercentage = float(totalList[1])
-    File.pop()#Removes total occupation and percentage
+    list.pop()#Removes total occupation and percentage
     return totalPercentage#returns total percentage to be stored globally
-    
-totalPercentage = editData(File)#total percentage is stored globally
-#print (totalPercentage)
+
+#totalPercentage = editData(File)#total percentage is stored globally
+#print (File)
 
 def makeDict(list):#returns a dictionary using the occupation as the key and the percentage as the value
     d = {}
@@ -37,16 +37,18 @@ def makeDict(list):#returns a dictionary using the occupation as the key and the
         #print (l)
         d[l[0]] = float(l[1])#Creates the dictionary using the occupation as the key and the percentage as the value
     return d
-        
-Dict = makeDict(File)
-def randOccupation(dict):#returns a random occupation based on percentages in the data
+
+#Dict = makeDict(File)
+def randOccupation(dict,totalPercentage):#returns a random occupation based on percentages in the data
     percent = uniform(0,totalPercentage)#picks a random float from 0 - 99.8
     for x in dict:
         percent -= dict[x]#subtracts each percentage  from the randomly picked percentage from 0 - 99.
         if percent < 0:
             return x
-print (randOccupation(Dict))
-        
-
-
-
+#print (randOccupation(Dict))
+def main():
+    File = read("occupations.csv")
+    totalPercentage = editData(File)#total percentage is stored globally
+    Dict = makeDict(File)
+    print (randOccupation(Dict,totalPercentage))
+main()
