@@ -1,3 +1,7 @@
+#Jerry Ye
+#Softdev1 p7
+#K13 -- Echo Echo Echo
+#2018-09-28
 from flask import Flask, render_template, request #imports class Flask
 app = Flask(__name__)#Creates an instance of Flask
 
