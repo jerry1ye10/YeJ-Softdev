@@ -9,9 +9,10 @@ app = Flask(__name__)#Creates an instance of Flask
 def hello_world():
     return render_template("template.html")
 
-@app.route('/auth')
+@app.route('/auth', methods=['POST','GET'])
 def test():
-    args = request.args['username']
+    print(request.method)
+    args = request.cookies.get('username')
     greeting = "Hello friend!"
     return render_template("auth.html", method = request.method, username = args, greeting = greeting)
 
