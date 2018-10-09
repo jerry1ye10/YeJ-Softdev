@@ -1,3 +1,8 @@
+#Bob - Ahnaf Hasan and Jerry Ye
+#SoftDev1 pd7
+#K #17: Average, ... or Basic?
+#2018-10-06
+
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitates CSV I/O
 import db_builder
