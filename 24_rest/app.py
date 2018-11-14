@@ -1,4 +1,4 @@
-#Bob - Jerry Ye and JiaJie Mai
+#Jerry Ye
 #SoftDev1 pd7
 #K24 - A RESTful Journey Skyward
 #2018-11-13
