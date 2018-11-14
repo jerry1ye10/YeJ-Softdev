@@ -9,7 +9,7 @@ app = Flask(__name__)#Creates an instance of Flask
 
 @app.route('/')#Defines index
 def hello_world():
-    f =  urllib.request.urlopen('https://api.nasa.gov/planetary/apod?api_key=KZA7h2LSwdHWgjPm5eQSFcO5QhFBJcWnGe8fJYoj', context=context)
+    f =  urllib.request.urlopen('https://api.nasa.gov/planetary/apod?api_key=KZA7h2LSwdHWgjPm5eQSFcO5QhFBJcWnGe8fJYoj')
     d = f.read()#Reads f and stores Json inside d
     data = json.loads(d)
     return render_template("template.html", pic = data['url'], explanation = data['explanation'])
