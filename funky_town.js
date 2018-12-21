@@ -1,6 +1,6 @@
 //Hi: Ivan Zhang and Jerry Ye
 //SoftDev1 pd7
-//K#29: Sequential Progression II: Electric Boogaloo
+//K#29: Sequential Progression
 //2018-12-19
 
 
@@ -36,24 +36,16 @@ var randS = document.getElementById('randomStudent');
 
 var printStudent = function() {
   var stu = randomStudent();
-	var p_tag = document.getElementById("randres");
-	p_tag.innerHTML = stu;
   console.log(stu);
 }
 var printgcd = function (){
   var num = gcd(5,10);
-	var p_tag = document.getElementById("gcdres");
-	p_tag.innerHTML = num;
   console.log(num);
 }
 var printFib = function (){
-  var num = fibby(10);
-	var p_tag = document.getElementById("fibres");
-	p_tag.innerHTML = num;
-	console.log(num);
+  var num = fibby(5);
+  console.log(num);
 }
-
-
 
 fib.addEventListener('click', printFib);
 gcD.addEventListener('click', printgcd);
